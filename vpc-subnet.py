@@ -25,6 +25,7 @@ def create_vpc_and_subnets(event):
     region = event.get("body").get("region")
     vpc_cidr = event.get("body").get("vpc_cidr")
     subnet_cidrs = event.get("body").get("subnet_cidrs")  # list expected
+    print(f"Received parameters - Region: {region}, VPC CIDR: {vpc_cidr}, Subnet CIDRs: {subnet_cidrs}")
 
     if not region or not vpc_cidr or not subnet_cidrs:
         return response(400, {"message": "region, vpc_cidr and subnet_cidrs are required fields and subnet_cidrs should be a list."})
