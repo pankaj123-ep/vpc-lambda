@@ -27,7 +27,10 @@ Create an API based on AWS services that can create a VPC with multiple subnets 
  - Retrieve VPC information by VPC ID
  - JSON-based input structure
 
-# IAM Role for Lambda:
+# IAM Role with Policy for Lambda:
+ - VPC full access
+ - Dynamodb Full access
+ - Cloudwatch log 
 
 # Lambda Runtime
 
