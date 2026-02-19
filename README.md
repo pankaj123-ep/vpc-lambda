@@ -72,12 +72,15 @@ Resource path : /get
   "region": "us-east-1",
   "vpc_id": "vpc-******"
 }
+```
 # Deployment Steps :
-    # Codepipeline - https://us-east-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/vpc-lambda-pipeline/view?region=us-east-1
-    ![alt text](image.png)
+Codepipeline - 
+    https://us-east-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/vpc-lambda-pipeline/view?region=us-east-1
+    ![![alt text](image.png)]
 
 # Integration Testing :
-    - aws Apigateway - https://p4mhyzuwvh.execute-api.us-east-1.amazonaws.com/Dev
+AWS Apigateway - 
+    https://p4mhyzuwvh.execute-api.us-east-1.amazonaws.com/Dev
     ![alt text](image-1.png)
 
 
