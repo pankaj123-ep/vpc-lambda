@@ -74,8 +74,8 @@ def create_vpc_and_subnets(event):
 
 
 def get_vpc_from_dynamodb(event):
-    region = event.get("region")
-    vpc_id = event.get("vpc_id")
+    region = event.get("queryStringParameters", {}).get("region")
+    vpc_id = event.get("queryStringParameters", {}).get("vpc_id")
 
     if not region or not vpc_id:
         return response(400, {"message": "region and vpc_id are required"})
