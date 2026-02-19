@@ -22,9 +22,9 @@ def lambda_handler(event, context):
 
 def create_vpc_and_subnets(event):
     print(json.dumps(event))
-    region = event.get("region")
-    vpc_cidr = event.get("vpc_cidr")
-    subnet_cidrs = event.get("subnet_cidrs")  # list expected
+    region = event.get("body").get("region")
+    vpc_cidr = event.get("body").get("vpc_cidr")
+    subnet_cidrs = event.get("body").get("subnet_cidrs")  # list expected
 
     if not region or not vpc_cidr or not subnet_cidrs:
         return response(400, {"message": "region, vpc_cidr and subnet_cidrs are required fields and subnet_cidrs should be a list."})
