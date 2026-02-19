@@ -151,6 +151,8 @@ Resource path : /get
 ```
 # Deployment Steps :
 Codepipeline - 
+Auto trigger when there is code changes in repository main branch. It helps for frequent release of services.
+
     https://us-east-1.console.aws.amazon.com/codesuite/codepipeline/pipelines/vpc-lambda-pipeline/view?region=us-east-1
     ![![alt text](image.png)]
 
