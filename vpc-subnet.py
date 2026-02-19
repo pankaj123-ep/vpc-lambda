@@ -12,7 +12,7 @@ def lambda_handler(event, context):
     if action == "POST" and path == "/create":
         return create_vpc_and_subnets(event)
     elif action == "GET" and path == "/getALL":
-        return get_vpc_from_dynamodb(event)
+        return get_all_vpc_from_dynamodb(event)
     elif action == "GET" and path == "/get":
         return get_vpc_from_dynamodb(event)
     else:
@@ -85,6 +85,21 @@ def get_vpc_from_dynamodb(event):
 
     try:
         result = table.get_item(Key={"VpcId": vpc_id})
+
+        if "Item" not in result:
+            return response(404, {"message": "VPC not found in DynamoDB"})
+
+        return response(200, result["Item"])
+
+    except Exception as e:
+        return response(500, {"error": str(e)})
+
+def get_all_vpc_from_dynamodb(event):
+    dynamodb = boto3.resource("dynamodb")
+    table = dynamodb.Table(DYNAMODB_TABLE)
+
+    try:
+        result = table.scan()
 
         if "Item" not in result:
             return response(404, {"message": "VPC not found in DynamoDB"})
