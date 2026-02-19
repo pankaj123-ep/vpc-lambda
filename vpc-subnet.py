@@ -101,10 +101,10 @@ def get_all_vpc_from_dynamodb(event):
     try:
         result = table.scan()
 
-        if "Item" not in result:
+        if "Items" not in result:
             return response(404, {"message": "VPC not found in DynamoDB"})
 
-        return response(200, result["Item"])
+        return response(200, result["Items"])
 
     except Exception as e:
         return response(500, {"error": str(e)})
