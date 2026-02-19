@@ -1,5 +1,6 @@
 # Problem-Statement :
 
+Create an API based on AWS services that can create a VPC with multiple subnets and store the results. We need to be able to retrieve the data of created resources from the API. The code should be written in Python. The API should be protected with an authentication layer. Authorization should be open to all authenticated users
 
 # vpc-lambda
 > AWS Lambda – VPC & Subnet Provisioning with DynamoDB Storage
@@ -54,10 +55,63 @@ Resource path : /create
   ]
 }
 ```
-
-
+# Event Sample Response 
+```json
+{
+    "message": "VPC and subnets created successfully",
+    "VpcId": "vpc-05fb13d3100fd7cba",
+    "Subnets": [
+        {
+            "SubnetId": "subnet-080ab5af87f359e9d",
+            "CidrBlock": "10.0.8.0/27"
+        },
+        {
+            "SubnetId": "subnet-0404fef05624bae12",
+            "CidrBlock": "10.0.9.0/27"
+        }
+    ]
+}
+```
 # Input Parameters - GET
 Resource path : /getALL
+
+# Event Sample Response
+```json
+[
+    {
+        "Subnets": [
+            {
+                "CidrBlock": "10.0.1.0/27",
+                "SubnetId": "subnet-0a6d118253b276fda"
+            },
+            {
+                "CidrBlock": "10.0.2.0/27",
+                "SubnetId": "subnet-0eac16bfef326aacb"
+            }
+        ],
+        "Region": "us-east-1",
+        "VpcId": "vpc-0eb587622219c7cac",
+        "VpcCidr": "10.0.0.0/16",
+        "CreatedAt": "2026-02-19 06:48:05.972997"
+    },
+    {
+        "Subnets": [
+            {
+                "CidrBlock": "10.0.4.0/27",
+                "SubnetId": "subnet-090573c2f4c85f215"
+            },
+            {
+                "CidrBlock": "10.0.5.0/27",
+                "SubnetId": "subnet-0b419bfa2362ac2d3"
+            }
+        ],
+        "Region": "us-east-1",
+        "VpcId": "vpc-0219bb276e07694fc",
+        "VpcCidr": "10.0.0.0/16",
+        "CreatedAt": "2026-02-19 07:24:30.241282"
+    }
+]
+```
 
 # Input Parameters - GET
 Resource path : /get
@@ -71,6 +125,25 @@ Resource path : /get
     {
   "region": "us-east-1",
   "vpc_id": "vpc-******"
+}
+```
+# Event Sample Response 
+```json
+{
+    "Subnets": [
+        {
+            "CidrBlock": "10.0.1.0/27",
+            "SubnetId": "subnet-0a6d118253b276fda"
+        },
+        {
+            "CidrBlock": "10.0.2.0/27",
+            "SubnetId": "subnet-0eac16bfef326aacb"
+        }
+    ],
+    "Region": "us-east-1",
+    "VpcId": "vpc-0eb587622219c7cac",
+    "VpcCidr": "10.0.0.0/16",
+    "CreatedAt": "2026-02-19 06:48:05.972997"
 }
 ```
 # Deployment Steps :
