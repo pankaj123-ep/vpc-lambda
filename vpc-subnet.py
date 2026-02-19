@@ -16,7 +16,7 @@ def lambda_handler(event, context):
     elif action == "GET" and path == "/get":
         return get_vpc_from_dynamodb(event)
     else:
-        return response(400, {"message": "Invalid action. Use 'create' or 'get'."})
+        return response(400, {"message": "Invalid action. Use 'create' or 'get' or 'getALL'."})
 
 
 def create_vpc_and_subnets(event):
