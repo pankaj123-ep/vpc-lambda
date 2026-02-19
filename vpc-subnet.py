@@ -6,6 +6,7 @@ from datetime import datetime
 DYNAMODB_TABLE = "VpcMetadata"
 
 def lambda_handler(event, context):
+    print(json.dumps(event))
     action = event.get("httpMethod")
     path = event.get("path")
 
