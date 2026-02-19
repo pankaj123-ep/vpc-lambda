@@ -1,8 +1,8 @@
 import json
 import boto3
 import datetime
-
-DYNAMODB_TABLE = "VpcMetadata"
+import os
+DYNAMODB_TABLE = os.environ['TableName']
 
 def lambda_handler(event, context):
     print(json.dumps(event)) # event logging for debugging
