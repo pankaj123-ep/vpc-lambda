@@ -22,9 +22,10 @@ def lambda_handler(event, context):
 
 def create_vpc_and_subnets(event):
     print(event)
-    region = event["body"]["region"]
-    vpc_cidr = event["body"]["vpc_cidr"]
-    subnet_cidrs = event["body"]["subnet_cidrs"]  # list expected
+    body = json.loads(event.get("body"))
+    region = body["region"]
+    vpc_cidr = body["vpc_cidr"]
+    subnet_cidrs = body["subnet_cidrs"]  # list expected
     print(f"Received parameters - Region: {region}, VPC CIDR: {vpc_cidr}, Subnet CIDRs: {subnet_cidrs}")
 
     if not region or not vpc_cidr or not subnet_cidrs:
