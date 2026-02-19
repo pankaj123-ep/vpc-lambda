@@ -59,7 +59,7 @@ def create_vpc_and_subnets(event):
             "VpcCidr": vpc_cidr,
             "Region": region,
             "Subnets": subnets,
-            "CreatedAt": datetime.now(datetime.timezone.utc).isoformat()
+            "CreatedAt": datetime.timezone.utcnow().isoformat()
         }
 
         table.put_item(Item=item)
