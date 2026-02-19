@@ -20,6 +20,7 @@ def lambda_handler(event, context):
 
 
 def create_vpc_and_subnets(event):
+    print(json.dumps(event))
     region = event.get("region")
     vpc_cidr = event.get("vpc_cidr")
     subnet_cidrs = event.get("subnet_cidrs")  # list expected
